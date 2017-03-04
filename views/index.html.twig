@@ -1,0 +1,33 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+
+	<h2>Micro Immo</h2>
+
+	<table id="table_id" class="display">
+			<thead>
+					<tr>
+							<th>Titre</th>
+							<th>Prix</th>
+							<th>Surface</th>
+							<th>Pièces</th>
+							<th>Prix / Metre</th>
+					</tr>
+			</thead>
+			<tbody>
+				{% for annonce in annonces %}
+						<tr>
+							<td><a href="{{ path('annonce', { 'id': annonce.id }) }}">{{annonce.title}}</a></td>
+							<td>{{annonce.prix}}</td>
+							<td>{{annonce.surface}}</td>
+							<td>{{annonce.nbPieces}}</td>
+							<td>{{(annonce.prix)/(annonce.surface)}}</td>
+						</tr>
+				{% endfor %}
+			</tbody>
+	</table>
+
+{% endblock %}

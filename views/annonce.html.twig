@@ -1,0 +1,16 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ annonce.title }}{% endblock %}
+
+{% block content %}
+<p>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			<h2><a href="{{ annonce.url }}" target="_blank"> {{ annonce.title }}</a></h2>
+			<h3>{{ annonce.prix }}€</h3>
+			<p><a href="{{ annonce.url }}" target="_blank">Url</a></p>
+    {% else %}
+			<h2>Details</h2>
+			<p><a href="{{ path('login') }} ">Log in</a> to see details.</p>
+    {% endif %}
+</p>
+{% endblock %}
